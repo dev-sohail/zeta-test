@@ -5,55 +5,290 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Reelcraft Clone</title>
 
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Bootstrap Icons CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-  <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
 
   <style>
     .main-content {
-      padding: 40px 20px; text-align: center; border-radius: 10px;
       background: linear-gradient(271.83deg, rgba(139, 70, 245, 0.14) 3.01%, rgba(15, 188, 244, 0.1) 18.34%, rgba(139, 70, 245, 0.19) 98.87%);
     }
+
+    .create-btn {
+      position: relative;
+      display: inline-block;
+      padding: 12px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+      background: linear-gradient(135deg, #3ac7ff, #0098ff);
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 170, 255, 0.4);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .create-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -50%;
+      width: 200%;
+      height: 100%;
+      background-image: radial-gradient(white 1px, transparent 1px);
+      background-size: 20px 20px;
+      animation: sparkle 4s linear infinite;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .create-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -30%;
+      width: 60%;
+      height: 200%;
+      background: rgba(255,255,255,0.2);
+      transform: rotate(25deg);
+      animation: shine 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .create-btn:hover {
+      opacity: 0.9;
+      box-shadow: 0 6px 20px rgba(0, 170, 255, 0.6);
+    }
+
+    .create-btn:active {
+      transform: scale(0.98);
+    }
+
+    @keyframes sparkle {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 40px 40px;
+      }
+    }
+
+    @keyframes shine {
+      0% {
+        left: -30%;
+        opacity: 0;
+      }
+      10% {
+        left: 50%;
+        opacity: 0.6;
+      }
+      20% {
+        left: 130%;
+        opacity: 0;
+      }
+      100% {
+        left: 130%;
+        opacity: 0;
+      }
+    }
+
+    /* @keyframes shiny {
+      0% {
+        transform: scale(0) rotate(45deg);
+        opacity: 0;
+      }
+      80% {
+        transform: scale(0) rotate(45deg);
+        opacity: 0.5;
+      }
+      81% {
+        transform: scale(4) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(50) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .animate-shiny {
+      animation: shiny 3s ease-in-out infinite;
+    } */
+
+
+    /* .custom-btn {
+      width: 130px;
+      height: 40px;
+      color: #fff;
+      border-radius: 5px;
+      padding: 10px 25px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 500;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      display: inline-block;
+      box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5),
+                  7px 7px 20px 0px rgba(0,0,0,.1),
+                  4px 4px 5px 0px rgba(0,0,0,.1);
+      outline: none;
+    }
+
+    .create-btn {
+      border: none;
+      background: linear-gradient(0deg, rgba(251,33,117,1) 0%, rgba(234,76,137,1) 100%);
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .create-btn:hover {
+      text-decoration: none;
+      color: #fff;
+      opacity: 0.7;
+    }
+
+    .create-btn:before {
+      position: absolute;
+      content: '';
+      display: inline-block;
+      top: -180px;
+      left: 0;
+      width: 30px;
+      height: 100%;
+      background-color: #fff;
+      animation: shiny-btn1 3s ease-in-out infinite;
+    }
+
+    .create-btn:active {
+      box-shadow: 4px 4px 6px 0 rgba(255,255,255,.3),
+                  -4px -4px 6px 0 rgba(116,125,136,.2), 
+                  inset -4px -4px 6px 0 rgba(255,255,255,.2),
+                  inset 4px 4px 6px 0 rgba(0,0,0,.2);
+    }
+
+    @-webkit-keyframes shiny-btn1 {
+      0% { -webkit-transform: scale(0) rotate(45deg); opacity: 0; }
+      80% { -webkit-transform: scale(0) rotate(45deg); opacity: 0.5; }
+      81% { -webkit-transform: scale(4) rotate(45deg); opacity: 1; }
+      100% { -webkit-transform: scale(50) rotate(45deg); opacity: 0; }
+    } */
+
+    .horizontal-scroll {
+        display: flex;
+        overflow-x: auto;
+        gap: 1rem;
+        padding-bottom: 0.5rem;
+        scroll-snap-type: x mandatory;
+    }
+
+    .horizontal-scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    #studio-section .card {
+        width: 393px;
+        height: 158px;
+    }
+
+    #featured-videos-section .card,
+    #book-review-section .card {
+        width: 300px;
+        height: 224px;
+    }
+
+    #featured-shorts-section .card,
+    #featured-stories-section .card,
+    #wishes-section .card {
+        width: 169px;
+        height: 352px;
+    }
+
+    .card img {
+        object-fit: cover;
+        width: 100%;
+        height: 60%;
+    }
+
+    @media (max-width: 768px) {
+        .card {
+        width: 90vw !important;
+        height: auto;
+        }
+    }
+
+    #studio-section .card {
+    width: 393px;
+    height: auto;
+    border-radius: 0.5rem;
+    border: solid rgb(190, 189, 189) 0.3px;
+    overflow: hidden;
+    user-select: text;
+  }
+
+  #studio-section .card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+  }
+
+  #studio-section .card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1f2937; /* gray-800 */
+    margin-bottom: 4px;
+  }
+
+  #studio-section .card p {
+    font-size: 0.875rem;
+    color: #6b7280; /* gray-500 */
+  }
+
+  @media (max-width: 768px) {
+    #studio-section .card {
+      width: 90vw !important;
+    }
+  }
   </style>
 </head>
 <body class="font-sans bg-gray-100">
 
   <!-- Sidebar -->
-  <div class="fixed top-0 left-0 w-[90px] h-full bg-gray-200 flex flex-col justify-between items-center py-4">
+  <aside class="fixed top-0 left-0 w-[90px] h-full bg-gray-100 border border-gray-300 flex flex-col justify-between items-center py-4">
     <div class="flex flex-col items-center space-y-4">
-      <a href="#"><img src="https://d2837bqk1d0gtb.cloudfront.net/nav_icon.webp" alt="logo" class="w-8 h-8"/></a>
-      <button class="w-9 h-9 bg-sky-500 text-white rounded flex items-center justify-center" title="New Video">
-        <i class="bi bi-plus-lg"></i>
-      </button>
-      <button class="w-9 h-9 rounded bg-white flex items-center justify-center" title="Dashboard"><i class="bi bi-grid"></i></button>
-      <button class="w-9 h-9 rounded bg-white flex items-center justify-center" title="Pricing"><i class="bi bi-currency-dollar"></i></button>
-      <button class="w-9 h-9 rounded bg-white flex items-center justify-center" title="Profile"><i class="bi bi-person"></i></button>
-      <span class="text-xs">Studio</span>
-      <button class="w-9 h-9 rounded bg-white flex items-center justify-center" title="Generate Image"><i class="bi bi-image"></i></button>
-      <button class="w-9 h-9 rounded bg-white flex items-center justify-center" title="Text to Speech"><i class="bi bi-mic"></i></button>
-      <button class="w-9 h-9 rounded bg-white flex items-center justify-center" title="Face Fusion"><i class="bi bi-arrow-repeat"></i></button>
-      <button class="w-9 h-9 rounded bg-white flex items-center justify-center" title="Character Dialogue"><i class="bi bi-chat-dots"></i></button>
+      <a href="#"><img src="https://d2837bqk1d0gtb.cloudfront.net/nav_icon.webp" alt="Logo" class="h-9"/></a>
+      <button class="w-[60px] h-9 bg-sky-500 text-white rounded flex items-center justify-center" title="New Video" aria-label="New Video"><i class="bi bi-plus-lg"></i></button>
+      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" title="Dashboard"><i class="bi bi-grid"></i></button>
+      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" title="Pricing"><i class="bi bi-currency-dollar"></i></button>
+      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" title="Profile"><i class="bi bi-person"></i></button>
+      <span class="text-xs font-semibold text-gray-700">Studio</span>
+      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" id="generate-image" title="Generate Image"><i class="bi bi-image"></i></button>
+      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" id="tts" title="Text to Speech"><i class="bi bi-mic"></i></button>
+      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" id="character-dialogue" title="Face Fusion"><i class="bi bi-arrow-repeat"></i></button>
+      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" id="face-fusion" title="Character Dialogue"><i class="bi bi-chat-dots"></i></button>
     </div>
-    <a href="https://discord.com" target="_blank">
-      <img src="https://www.svgrepo.com/show/353655/discord-icon.svg" alt="Discord" class="w-8 h-8"/>
+    <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
+      <img src="https://www.svgrepo.com/show/353655/discord-icon.svg" alt="Discord" class="w-[4-px] h-[40px]"/>
     </a>
-  </div>
+  </aside>
 
-  <!-- Main -->
-  <div class="ml-[90px] p-6">
+  <!-- Main Content -->
+  <main class="ml-[90px] p-6">
+
     <!-- Header -->
-    <div class="flex justify-end items-center gap-4 mb-6">
+    <header class="flex justify-end items-center gap-4 mb-6">
       <span class="text-sm">Available Credits: *</span>
       <button class="bg-sky-500 text-white px-4 py-1 rounded-md">Upgrade</button>
 
       <!-- Profile Dropdown -->
-      <div class="relative inline-block text-left">
-        <button id="dropdownButton" class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center">
+      <div class="relative">
+        <button id="dropdownButton" class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center" aria-label="Profile menu">
           <i class="bi bi-person"></i>
         </button>
         <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white z-10">
@@ -61,100 +296,144 @@
           <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
         </div>
       </div>
-    </div>
+    </header>
 
-    <!-- Intro -->
-    <div class="main-content text-center p-8 rounded-lg">
-      <h1 class="text-xl font-semibold">Create beautiful stories in minutes</h1>
-      <p class="text-gray-600 mt-2">Transform your words into visual masterpieces using AI</p>
-      <textarea class="w-full max-w-xl h-24 mt-4 p-2 border border-gray-300 rounded" placeholder="Start by typing or pasting an idea or a story..."></textarea>
+    <!-- Intro Section -->
+    <section class="main-content py-12 px-4 rounded-lg text-center">
+      <h1 class="text-4xl text-gray-700 font-semibold">Create beautiful stories in minutes</h1>
+      <p class="text-gray-600 mt-2">Transform your words into visual masterpieces: Leverage AI technology to craft breathtaking videos</p>
+      <textarea class="w-full max-w-3xl h-24 mt-4 p-2 rounded border-none focus:outline-none" placeholder="Start by typing or pasting an idea or a story..." maxlength="4000"></textarea>
       <br>
-      <button class="create-btn bg-sky-500 text-white px-6 py-2 rounded mt-4">Create</button>
-    </div>
+      <button class="create-btn">Create</button>
+      <!-- <button class="relative px-6 py-2 rounded-md text-white font-semibold bg-gradient-to-t from-pink-600 to-pink-400 shadow-md hover:opacity-70 active:shadow-inner overflow-hidden">
+        Create
+        <span class="absolute top-[-180px] left-0 w-[30px] h-full bg-white opacity-0 animate-shiny"></span>
+      </button>       -->
+    </section>
 
-    <!-- Reusable Card -->
+    <section class="mt-10">
+      <h2 class="text-lg font-semibold">Studio</h2>
+      <div class="flex gap-[12px] mt-2 flex-wrap" id="studio-section"></div>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-lg font-semibold mb-2">Featured Videos</h2>
+        <div class="flex gap-4 mt-2 flex-wrap" id="featured-videos-section">
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-lg font-semibold">Featured Shorts</h2>
+      <div class="flex gap-4 mt-2 flex-wrap" id="featured-shorts-section"></div>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-lg font-semibold">Featured Stories</h2>
+      <div class="flex gap-4 mt-2 flex-wrap" id="featured-stories-section"></div>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-lg font-semibold">Book Review</h2>
+      <div class="flex gap-4 mt-2 flex-wrap" id="book-review-section"></div>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-lg font-semibold">Wishes</h2>
+      <div class="flex gap-4 mt-2 flex-wrap" id="wishes-section"></div>
+    </section>
+
+    <!-- Card Template -->
     <template id="card-template">
-      <a href="#" class="bg-white w-[200px] h-[260px] rounded shadow hover:shadow-md transition overflow-hidden flex flex-col">
-        <img src="https://via.placeholder.com/200x100" class="w-full h-[100px] object-cover" alt="Card image" />
-        <div class="p-2">
-          <h3 class="font-semibold text-sm mb-1">Card Title</h3>
-          <p class="text-xs text-gray-600">This is a short description about the content inside this card.</p>
+      <a class="card bg-white transition overflow-hidden flex flex-col" href="" target="_blank" rel="noopener noreferrer">
+        <img src="" alt="Card image" />
+        <div class="p-3 bg-white">
+          <h3>Title</h3>
+          <p>Description</p>
         </div>
       </a>
     </template>
 
-    <!-- Section Generator -->
-    <script>
-      function renderCards(containerSelector, count = 3) {
-        const template = document.getElementById('card-template').content;
-        const container = document.querySelector(containerSelector);
-        for (let i = 0; i < count; i++) {
-          container.appendChild(template.cloneNode(true));
-        }
-      }
-    </script>
+  </main>
 
-    <!-- Sections -->
-    <div class="mt-10">
-      <h2 class="text-lg font-semibold">Studio</h2>
-      <div class="flex gap-4 mt-2 flex-wrap" id="studio-section"></div>
-    </div>
-
-    <div class="mt-10 swiper">
-      <h2 class="text-lg font-semibold mb-2">Featured Videos</h2>
-      <div class="swiper-wrapper" id="featured-videos-section"></div>
-    </div>
-
-    <div class="mt-10">
-      <h2 class="text-lg font-semibold">Featured Shorts</h2>
-      <div class="flex gap-4 mt-2 flex-wrap" id="featured-shorts-section"></div>
-    </div>
-
-    <div class="mt-10">
-      <h2 class="text-lg font-semibold">Featured Stories</h2>
-      <div class="flex gap-4 mt-2 flex-wrap" id="featured-stories-section"></div>
-    </div>
-
-    <div class="mt-10">
-      <h2 class="text-lg font-semibold">Book Review</h2>
-      <div class="flex gap-4 mt-2 flex-wrap" id="book-review-section"></div>
-    </div>
-
-    <div class="mt-10">
-      <h2 class="text-lg font-semibold">Wishes</h2>
-      <div class="flex gap-4 mt-2 flex-wrap" id="wishes-section"></div>
-    </div>
-  </div>
-
-  <!-- Swiper & JS Logic -->
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
   <script>
+    // dropbtn
+    const btn = document.getElementById('dropdownButton');
+    const menu = document.getElementById('dropdownMenu');
+    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    window.addEventListener('click', (e) => {
+      if (!btn.contains(e.target) && !menu.contains(e.target)) menu.classList.add('hidden');
+    });
+
+    // Cards
+    const renderCards = (selector, data = []) => {
+      const container = document.querySelector(selector);
+      const template = document.getElementById('card-template').content;
+      container.innerHTML = '';
+      data.forEach(item => {
+        const card = template.cloneNode(true);
+        card.querySelector('.card').href = item.link || '#';
+        card.querySelector('img').src = item.image;
+        card.querySelector('img').alt = item.title;
+        card.querySelector('h3').textContent = item.title;
+        card.querySelector('p').textContent = item.description;
+        card.querySelector('.card').classList.add('swiper-slide'); // Important for Swiper
+        container.appendChild(card);
+      });
+    };
+
+    const studioCards = [
+      { image: 'https://picsum.photos/seed/studio1/200/100', title: 'Generate Image', description: 'Turn your words into stunning visuals with AI', link: '#generate-image' },
+      { image: 'https://picsum.photos/seed/studio2/200/100', title: 'Text to Speech', description: 'Bring your text to life with natural-sounding voiceovers', link: '#tts' },
+      { image: 'https://picsum.photos/seed/studio3/200/100', title: 'Character Dialogue', description: 'Make characters talk with custom voice dialogues', link: '#character-dialogue' },
+      { image: 'https://picsum.photos/seed/studio4/200/100', title: 'Face Fusion', description: 'Blend two faces into one seamlessly', link: '#face-fusion' }
+    ];
+
+
+    const featuredVideos = [
+      { image: 'https://picsum.photos/seed/video1/200/100', title: 'Epic Journey', description: 'Travel video powered by AI' },
+      { image: 'https://picsum.photos/seed/video2/200/100', title: 'Startup Launch', description: 'Promo video for startups' },
+      { image: 'https://picsum.photos/seed/video3/200/100', title: 'Fitness Ad', description: 'Short ad for fitness brand' }
+    ];
+
+    const featuredShorts = [
+      { image: 'https://picsum.photos/seed/short1/200/100', title: '30-sec Book Recap', description: 'Summarize in seconds' },
+      { image: 'https://picsum.photos/seed/short2/200/100', title: 'Motivational Clip', description: 'Uplift your day' },
+      { image: 'https://picsum.photos/seed/short3/200/100', title: 'Quick Hacks', description: 'Fast life tips' }
+    ];
+
+    const featuredStories = [
+      { image: 'https://picsum.photos/seed/story1/200/100', title: 'Sci-Fi Tale', description: 'Futuristic narrative' },
+      { image: 'https://picsum.photos/seed/story2/200/100', title: 'Fantasy Quest', description: 'AI-powered adventure' },
+      { image: 'https://picsum.photos/seed/story3/200/100', title: 'Drama Short', description: 'Emotional storytelling' }
+    ];
+
+    const bookReviews = [
+      { image: 'https://picsum.photos/seed/book1/200/100', title: 'Atomic Habits', description: 'Mini-review & key points' },
+      { image: 'https://picsum.photos/seed/book2/200/100', title: 'Deep Work', description: 'Productivity breakdown' },
+      { image: 'https://picsum.photos/seed/book3/200/100', title: 'The Alchemist', description: 'Literary insights' }
+    ];
+
+    const wishes = [
+      { image: 'https://picsum.photos/seed/wish1/200/100', title: 'Birthday Wish', description: 'AI-generated greeting' },
+      { image: 'https://picsum.photos/seed/wish2/200/100', title: 'Wedding Congrats', description: 'Celebrate with style' },
+      { image: 'https://picsum.photos/seed/wish3/200/100', title: 'New Year Message', description: '2025 Highlights' }
+    ];
+
     new Swiper('.swiper', {
       slidesPerView: 'auto',
       spaceBetween: 20,
-      freeMode: true
+      freeMode: true,
     });
 
-    // Profile dropdown
-    const btn = document.getElementById('dropdownButton');
-    const menu = document.getElementById('dropdownMenu');
-    btn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-    });
-    window.addEventListener('click', (e) => {
-      if (!btn.contains(e.target) && !menu.contains(e.target)) {
-        menu.classList.add('hidden');
-      }
-    });
-
-    // Render cards dynamically
-    renderCards('#studio-section');
-    renderCards('#featured-videos-section');
-    renderCards('#featured-shorts-section');
-    renderCards('#featured-stories-section');
-    renderCards('#book-review-section');
-    renderCards('#wishes-section');
+    renderCards('#studio-section', studioCards);
+    renderCards('#featured-videos-section', featuredVideos);
+    renderCards('#featured-shorts-section', featuredShorts);
+    renderCards('#featured-stories-section', featuredStories);
+    renderCards('#book-review-section', bookReviews);
+    renderCards('#wishes-section', wishes);
   </script>
-
 </body>
 </html>
