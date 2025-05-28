@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reelcraft Clone</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Bootstrap Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+
+  <style>
+    .main-content {
+      padding: 40px 20px; text-align: center; border-radius: 10px;
+      background: linear-gradient(271.83deg, rgba(139, 70, 245, 0.14) 3.01%, rgba(15, 188, 244, 0.1) 18.34%, rgba(139, 70, 245, 0.19) 98.87%);
+    }
+  </style>
+</head>
+<body class="font-sans bg-gray-100">
+
+  <!-- Sidebar -->
+  <div class="fixed top-0 left-0 w-[90px] h-full bg-gray-200 flex flex-col justify-between items-center py-4">
+    <div class="flex flex-col items-center space-y-4">
+      <a href="#"><img src="https://d2837bqk1d0gtb.cloudfront.net/nav_icon.webp" alt="logo" class="w-8 h-8"/></a>
+      <button class="w-9 h-9 bg-sky-500 text-white rounded flex items-center justify-center" title="New Video">
+        <i class="bi bi-plus-lg"></i>
+      </button>
+      <button class="w-9 h-9 rounded bg-white flex items-center justify-center" title="Dashboard"><i class="bi bi-grid"></i></button>
+      <button class="w-9 h-9 rounded bg-white flex items-center justify-center" title="Pricing"><i class="bi bi-currency-dollar"></i></button>
+      <button class="w-9 h-9 rounded bg-white flex items-center justify-center" title="Profile"><i class="bi bi-person"></i></button>
+      <span class="text-xs">Studio</span>
+      <button class="w-9 h-9 rounded bg-white flex items-center justify-center" title="Generate Image"><i class="bi bi-image"></i></button>
+      <button class="w-9 h-9 rounded bg-white flex items-center justify-center" title="Text to Speech"><i class="bi bi-mic"></i></button>
+      <button class="w-9 h-9 rounded bg-white flex items-center justify-center" title="Face Fusion"><i class="bi bi-arrow-repeat"></i></button>
+      <button class="w-9 h-9 rounded bg-white flex items-center justify-center" title="Character Dialogue"><i class="bi bi-chat-dots"></i></button>
+    </div>
+    <a href="https://discord.com" target="_blank">
+      <img src="https://www.svgrepo.com/show/353655/discord-icon.svg" alt="Discord" class="w-8 h-8"/>
+    </a>
+  </div>
+
+  <!-- Main -->
+  <div class="ml-[90px] p-6">
+    <!-- Header -->
+    <div class="flex justify-end items-center gap-4 mb-6">
+      <span class="text-sm">Available Credits: *</span>
+      <button class="bg-sky-500 text-white px-4 py-1 rounded-md">Upgrade</button>
+
+      <!-- Profile Dropdown -->
+      <div class="relative inline-block text-left">
+        <button id="dropdownButton" class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center">
+          <i class="bi bi-person"></i>
+        </button>
+        <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white z-10">
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Intro -->
+    <div class="main-content text-center p-8 rounded-lg">
+      <h1 class="text-xl font-semibold">Create beautiful stories in minutes</h1>
+      <p class="text-gray-600 mt-2">Transform your words into visual masterpieces using AI</p>
+      <textarea class="w-full max-w-xl h-24 mt-4 p-2 border border-gray-300 rounded" placeholder="Start by typing or pasting an idea or a story..."></textarea>
+      <br>
+      <button class="create-btn bg-sky-500 text-white px-6 py-2 rounded mt-4">Create</button>
+    </div>
+
+    <!-- Reusable Card -->
+    <template id="card-template">
+      <a href="#" class="bg-white w-[200px] h-[260px] rounded shadow hover:shadow-md transition overflow-hidden flex flex-col">
+        <img src="https://via.placeholder.com/200x100" class="w-full h-[100px] object-cover" alt="Card image" />
+        <div class="p-2">
+          <h3 class="font-semibold text-sm mb-1">Card Title</h3>
+          <p class="text-xs text-gray-600">This is a short description about the content inside this card.</p>
+        </div>
+      </a>
+    </template>
+
+    <!-- Section Generator -->
+    <script>
+      function renderCards(containerSelector, count = 3) {
+        const template = document.getElementById('card-template').content;
+        const container = document.querySelector(containerSelector);
+        for (let i = 0; i < count; i++) {
+          container.appendChild(template.cloneNode(true));
+        }
+      }
+    </script>
+
+    <!-- Sections -->
+    <div class="mt-10">
+      <h2 class="text-lg font-semibold">Studio</h2>
+      <div class="flex gap-4 mt-2 flex-wrap" id="studio-section"></div>
+    </div>
+
+    <div class="mt-10 swiper">
+      <h2 class="text-lg font-semibold mb-2">Featured Videos</h2>
+      <div class="swiper-wrapper" id="featured-videos-section"></div>
+    </div>
+
+    <div class="mt-10">
+      <h2 class="text-lg font-semibold">Featured Shorts</h2>
+      <div class="flex gap-4 mt-2 flex-wrap" id="featured-shorts-section"></div>
+    </div>
+
+    <div class="mt-10">
+      <h2 class="text-lg font-semibold">Featured Stories</h2>
+      <div class="flex gap-4 mt-2 flex-wrap" id="featured-stories-section"></div>
+    </div>
+
+    <div class="mt-10">
+      <h2 class="text-lg font-semibold">Book Review</h2>
+      <div class="flex gap-4 mt-2 flex-wrap" id="book-review-section"></div>
+    </div>
+
+    <div class="mt-10">
+      <h2 class="text-lg font-semibold">Wishes</h2>
+      <div class="flex gap-4 mt-2 flex-wrap" id="wishes-section"></div>
+    </div>
+  </div>
+
+  <!-- Swiper & JS Logic -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <script>
+    new Swiper('.swiper', {
+      slidesPerView: 'auto',
+      spaceBetween: 20,
+      freeMode: true
+    });
+
+    // Profile dropdown
+    const btn = document.getElementById('dropdownButton');
+    const menu = document.getElementById('dropdownMenu');
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+    window.addEventListener('click', (e) => {
+      if (!btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+
+    // Render cards dynamically
+    renderCards('#studio-section');
+    renderCards('#featured-videos-section');
+    renderCards('#featured-shorts-section');
+    renderCards('#featured-stories-section');
+    renderCards('#book-review-section');
+    renderCards('#wishes-section');
+  </script>
+
+</body>
+</html>
