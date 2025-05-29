@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reelcraft Clone</title>
-
   <script src="https://cdn.tailwindcss.com"></script>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-
-
   <style>
+    html { scroll-behavior: smooth; }
+    body { background: white !important; }
     .main-content {
       background: linear-gradient(271.83deg, rgba(139, 70, 245, 0.14) 3.01%, rgba(15, 188, 244, 0.1) 18.34%, rgba(139, 70, 245, 0.19) 98.87%);
     }
@@ -21,7 +17,6 @@
       background-color: rgba(144, 200, 223, 0.418);
       color: rgba(54, 191, 245, 0.623);
     }
-
     .create-btn {
       position: relative;
       display: inline-block;
@@ -38,7 +33,6 @@
       box-shadow: 0 4px 15px rgba(0, 170, 255, 0.4);
       font-family: 'Segoe UI', sans-serif;
     }
-
     .create-btn::before {
       content: '';
       position: absolute;
@@ -52,7 +46,6 @@
       opacity: 0.4;
       pointer-events: none;
     }
-
     .create-btn::after {
       content: '';
       position: absolute;
@@ -65,48 +58,18 @@
       animation: shine 4s ease-in-out infinite;
       pointer-events: none;
     }
-
-    .create-btn:hover {
-      opacity: 0.9;
-      box-shadow: 0 6px 20px rgba(0, 170, 255, 0.6);
-    }
-
-    .create-btn:active {
-      transform: scale(0.98);
-    }
-
+    .create-btn:hover { opacity: 0.9; box-shadow: 0 6px 20px rgba(0, 170, 255, 0.6); }
+    .create-btn:active { transform: scale(0.98); }
     @keyframes sparkle {
-      0% {
-        background-position: 0 0;
-      }
-
-      100% {
-        background-position: 40px 40px;
-      }
+      0% { background-position: 0 0; }
+      100% { background-position: 40px 40px; }
     }
-
     @keyframes shine {
-      0% {
-        left: -30%;
-        opacity: 0;
-      }
-
-      10% {
-        left: 50%;
-        opacity: 0.6;
-      }
-
-      20% {
-        left: 130%;
-        opacity: 0;
-      }
-
-      100% {
-        left: 130%;
-        opacity: 0;
-      }
+      0% { left: -30%; opacity: 0; }
+      10% { left: 50%; opacity: 0.6; }
+      20% { left: 130%; opacity: 0; }
+      100% { left: 130%; opacity: 0; }
     }
-
     .inline-container {
       display: flex;
       flex-direction: row;
@@ -117,11 +80,9 @@
       padding-bottom: 8px;
       flex-wrap: nowrap;
     }
-
     .inline-item {
       flex: 0 0 auto;
       width: 169px;
-      /* Match card width for shorts/stories/wishes */
       height: 352px;
       background: #f3f4f6;
       border-radius: 5.5px;
@@ -129,38 +90,37 @@
       flex-direction: column;
       margin: 0;
     }
-
     #studio-section .card {
       width: 393px;
       height: 158px;
+      text-align: left;
     }
-
     #featured-videos-section .card,
     #book-review-section .card {
       width: 300px;
       height: 224px;
+      text-align: left;
+      border: solid rgba(233, 229, 229, 0.774) 0.001px;
     }
-
     #featured-shorts-section .card,
     #featured-stories-section .card,
     #wishes-section .card {
       width: 169px;
       height: 352px;
+      text-align: left;
+      border: solid rgba(233, 229, 229, 0.774) 0.001px;
     }
-
     .card img {
       object-fit: cover;
       width: 100%;
       height: 60%;
     }
-
     @media (max-width: 768px) {
       .card {
         width: 90vw !important;
         height: auto;
       }
     }
-
     #studio-section .card {
       width: 393px;
       height: auto;
@@ -169,149 +129,107 @@
       overflow: hidden;
       user-select: text;
     }
-
     #studio-section .card img {
       width: 100%;
       height: 160px;
       object-fit: cover;
       border-bottom: 1px solid #eee;
     }
-
     #studio-section .card h3 {
       font-size: 1rem;
       font-weight: 600;
       color: #1f2937;
-      /* gray-800 */
       margin-bottom: 4px;
     }
-
     #studio-section .card p {
       font-size: 0.875rem;
       color: #6b7280;
-      /* gray-500 */
     }
-
     @media (max-width: 768px) {
       #studio-section .card {
         width: 90vw !important;
       }
     }
-
-    /* WebKit Browsers (Chrome, Safari, Edge) */
     ::-webkit-scrollbar {
       height: 6px;
-      /* thin scrollbar */
       background-color: #eee;
-      /* light track background */
       border-radius: 2rem;
     }
-
     ::-webkit-scrollbar-thumb {
       background-color: #999;
-      /* medium gray thumb */
       border-radius: 2rem;
     }
-
     ::-webkit-scrollbar-thumb:hover {
       background-color: #888;
-      /* slightly darker on hover */
     }
-
     ::-webkit-scrollbar-track {
       background-color: #eee;
       border-radius: 2rem;
     }
-
-    /* Firefox */
     * {
       scrollbar-width: thin;
       scrollbar-color: #999 #eee;
     }
-
     .loader {
       border-top-color: #3b82f6;
-      /* Tailwind blue-500 */
       animation: spin 1s linear infinite;
     }
-
     @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+      to { transform: rotate(360deg); }
     }
   </style>
 </head>
-
-<body class="font-sans bg-gray-100">
+<body class="scroll-smooth font-sans bg-gray-100">
 
   <!-- Sidebar -->
-  <aside class="fixed top-0 left-0 w-[90px] h-full bg-gray-100 border border-gray-300 flex flex-col justify-between items-center py-4">
+  <aside class="fixed top-0 left-0 w-[90px] h-full bg-gray-100 border border-gray-300 flex flex-col justify-between items-center py-4" aria-label="Sidebar">
     <div class="flex flex-col items-center space-y-4" id="sidebar-buttons">
-      <a href="#" id="main-content-link-btn"><img src="https://d2837bqk1d0gtb.cloudfront.net/nav_icon.webp" alt="Logo" class="h-9" /></a>
+      <a href="#" id="main-content-link-btn" aria-label="Home"><img src="https://d2837bqk1d0gtb.cloudfront.net/nav_icon.webp" alt="Logo" class="h-9" /></a>
       <button class="w-[60px] h-9 bg-sky-500 text-white rounded flex items-center justify-center" id="main-content-btn" title="New Video" aria-label="New Video">
         <i class="bi bi-plus-lg"></i>
       </button>
-      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" id="dashboard-btn" title="Dashboard">
+      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" id="dashboard-btn" title="Dashboard" aria-label="Dashboard">
         <i class="bi bi-grid"></i>
       </button>
-      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" id="pricing-btn" title="Pricing">
+      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" id="pricing-btn" title="Pricing" aria-label="Pricing">
         <i class="bi bi-currency-dollar"></i>
       </button>
-      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" id="profile-btn" title="Profile">
+      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" id="profile-btn" title="Profile" aria-label="Profile">
         <i class="bi bi-person"></i>
       </button>
       <span class="text-xs font-semibold text-gray-700">Studio</span>
-      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" id="generate-image" title="Generate Image">
+      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" id="generate-image-btn" title="Generate Image" aria-label="Generate Image">
         <i class="bi bi-image"></i>
       </button>
-      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" id="tts" title="Text to Speech">
+      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" id="tts" title="Text to Speech" aria-label="Text to Speech">
         <i class="bi bi-mic"></i>
       </button>
-      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" id="character-dialogue" title="Face Fusion">
+      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" id="face-fusion" title="Face Fusion" aria-label="Face Fusion">
         <i class="bi bi-arrow-repeat"></i>
       </button>
-      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" id="face-fusion" title="Character Dialogue">
+      <button class="w-[60px] h-9 rounded flex items-center justify-center hover:bg-sky-100 hover:text-sky-500" id="character-dialogue" title="Character Dialogue" aria-label="Character Dialogue">
         <i class="bi bi-chat-dots"></i>
       </button>
     </div>
-    <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
+    <a href="https://discord.com" target="_blank" rel="noopener noreferrer" aria-label="Discord">
       <img src="https://www.svgrepo.com/show/353655/discord-icon.svg" alt="Discord" class="w-[40px] h-[40px]" />
     </a>
   </aside>
 
   <!-- Main Content -->
   <main class="ml-[90px] p-6" id="main-content">
-
     <!-- Header -->
     <header class="flex justify-end items-center gap-4 mb-6">
       <span class="text-sm">Available Credits: *</span>
       <button class="bg-sky-500 text-white px-4 py-1 rounded-md" id="pricing-btn-header">Upgrade</button>
-
       <!-- Profile Dropdown -->
       <div class="relative">
-        <button id="dropdownButton" class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center"
-          aria-label="Profile menu">
-          <span id="profile-avatar" class="w-8 h-8 rounded-full bg-sky-400 text-white flex items-center justify-center text-lg font-bold select-none overflow-hidden">
-            <!-- Avatar will be inserted here -->
-          </span>
+        <button id="dropdownButton" class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center" aria-label="Profile menu">
+          <span id="profile-avatar" class="w-8 h-8 rounded-full bg-sky-400 text-white flex items-center justify-center text-lg font-bold select-none overflow-hidden"></span>
         </button>
-        <script>
-            const randomId = Math.floor(Math.random() * 70) + 1;
-            const profileImgUrl = `https://i.pravatar.cc/64?img=${randomId}`;
-
-          const avatarSpan = document.getElementById('profile-avatar');
-          if (profileImgUrl) {
-            avatarSpan.innerHTML = `<img src="${profileImgUrl}" alt="Profile" class="w-8 h-8 rounded-full object-cover">`;
-          } else {
-            // Show random letter if no image
-            avatarSpan.textContent = String.fromCharCode(65 + Math.floor(Math.random() * 26));
-          }
-        </script>
         <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white z-10">
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" id="profile-btn-header"><i
-              class="bi bi-person-circle mr-2"></i> Profile</a>
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"><i
-              class="bi bi-box-arrow-right mr-2"></i> Logout</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" id="profile-btn-header"><i class="bi bi-person-circle mr-2"></i> Profile</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"><i class="bi bi-box-arrow-right mr-2"></i> Logout</a>
         </div>
       </div>
     </header>
@@ -319,65 +237,65 @@
     <!-- Intro Section -->
     <section class="main-content py-12 px-4 rounded-lg text-center">
       <h1 class="text-3xl text-gray-700 font-semibold">Create beautiful stories in minutes</h1>
-      <p class="text-gray-600 text-small mt-2">Transform your words into visual masterpieces: Leverage AI technology to
-        craft breathtaking videos</p>
-      <textarea class="w-full max-w-3xl h-24 mt-4 p-3 rounded-[.4rem] border-none focus:outline-none"
-        placeholder="Start by typing or pasting an idea or a story..." maxlength="4000"></textarea>
+      <p class="text-gray-600 text-small mt-2">Transform your words into visual masterpieces: Leverage AI technology to craft breathtaking videos</p>
+      <textarea class="w-full max-w-3xl h-24 mt-4 p-3 rounded-[.4rem] border-none focus:outline-none" placeholder="Start by typing or pasting an idea or a story..." maxlength="4000"></textarea>
       <br>
       <button class="create-btn mt-2">Create</button>
       <div id="generated-video-output" class="mt-6"></div>
     </section>
 
+    <!-- Studio Section -->
     <section class="mt-10">
       <h2 class="text-lg font-semibold">Studio</h2>
       <div class="flex gap-[12px] mt-2 flex-wrap scroll-smooth" id="studio-section"></div>
     </section>
 
+    <!-- Featured Videos -->
     <section class="mt-10">
       <h2 class="text-lg font-semibold mb-2">Featured Videos</h2>
-      <div class="flex gap-4 mt-2 flex-wrap inline-container" id="featured-videos-section">
-      </div>
+      <div class="inline-container" id="featured-videos-section"></div>
     </section>
 
+    <!-- Featured Shorts -->
     <section class="mt-10">
       <h2 class="text-lg font-semibold">Featured Shorts</h2>
-      <div class="flex gap-4 mt-2 flex-wrap inline-container" id="featured-shorts-section"></div>
+      <div class="inline-container" id="featured-shorts-section"></div>
     </section>
 
+    <!-- Featured Stories -->
     <section class="mt-10">
       <h2 class="text-lg font-semibold">Featured Stories</h2>
-      <div class="flex gap-4 mt-2 flex-wrap inline-container" id="featured-stories-section"></div>
+      <div class="inline-container" id="featured-stories-section"></div>
     </section>
 
+    <!-- Book Review -->
     <section class="mt-10">
       <h2 class="text-lg font-semibold">Book Review</h2>
-      <div class="flex gap-4 mt-2 flex-wrap inline-container" id="book-review-section"></div>
+      <div class="inline-container" id="book-review-section"></div>
     </section>
 
+    <!-- Wishes -->
     <section class="mt-10">
       <h2 class="text-lg font-semibold">Wishes</h2>
-      <div class="flex gap-4 mt-2 flex-wrap inline-container" id="wishes-section"></div>
+      <div class="inline-container" id="wishes-section"></div>
     </section>
 
     <!-- Card Template -->
     <template id="card-template">
-      <a class="card bg-white transition overflow-hidden flex flex-col relative group" href="" target="_blank"
-        rel="noopener noreferrer">
+      <button class="card bg-white transition overflow-hidden flex flex-col relative group inline-item" rel="noopener noreferrer">
         <img src="" class="w-full h-full object-cover" alt="Card image" style="flex:1 1 0%; min-height: 180px;" />
         <div class="absolute bottom-0 left-0 w-full bg-white from-black/80 to-black/10 px-4 py-3">
           <h3 class="text-black text-base"></h3>
           <p class="text-gray-200 text-xs mt-1"></p>
         </div>
-      </a>
+      </button>
     </template>
-
   </main>
-  <!-- Dashboard Section -->
-  <main id="dashboard-section" class="hidden p-6">
-    <div id="" class="p-4">
-      <h2 class="text-xl font-bold mb-4">My Videos</h2>
 
-      <!-- Filter dropdowns -->
+  <!-- Dashboard Section -->
+  <main id="dashboard-section" class="ml-[90px] p-6 hidden">
+    <div class="p-4">
+      <h2 class="text-xl font-bold mb-4">My Videos</h2>
       <div class="flex gap-4 mb-4">
         <select class="border rounded px-3 py-2">
           <option>Select content type</option>
@@ -389,30 +307,23 @@
           <option>Select dimensions</option>
         </select>
       </div>
-
-      <!-- Video grid -->
       <div class="flex gap-4">
-        <!-- New video card -->
         <div class="border border-blue-400 border-dashed rounded-lg w-48 h-28 flex items-center justify-center">
           <div class="text-center text-blue-500 font-semibold cursor-pointer">+<br>New video</div>
         </div>
-
-        <!-- Example video card -->
         <div class="relative w-48 h-28 bg-black rounded-lg overflow-hidden">
           <img src="https://picsum.photos/id/1018/200/300" alt="Video" class="object-cover h-full mx-auto" />
-          <p class="absolute bottom-0 bg-black bg-opacity-60 text-white text-xs w-full p-1 text-center">Wilderness
-            Wonders: A Nature Escape</p>
+          <p class="absolute bottom-0 bg-black bg-opacity-60 text-white text-xs w-full p-1 text-center">Wilderness Wonders: A Nature Escape</p>
         </div>
       </div>
     </div>
   </main>
 
   <!-- Pricing Section -->
-  <main id="pricing-section" class="hidden p-6">
+  <main id="pricing-section" class="hidden p-6 ml-[90px]">
     <div class="p-4 max-w-3xl mx-auto">
       <h2 class="text-2xl font-bold mb-6 text-center">Pricing Plans</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Free Plan -->
         <div class="border rounded-lg p-6 bg-white shadow text-center flex flex-col">
           <h3 class="text-lg font-semibold mb-2">Free</h3>
           <div class="text-3xl font-bold mb-2">$0</div>
@@ -423,18 +334,16 @@
           </ul>
           <button class="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600">Current Plan</button>
         </div>
-        <!-- Pro Plan -->
         <div class="border-2 border-sky-500 rounded-lg p-6 bg-white shadow-lg text-center flex flex-col">
           <h3 class="text-lg font-semibold mb-2">Pro</h3>
           <div class="text-3xl font-bold mb-2">$19<span class="text-base font-normal">/mo</span></div>
-          <ul class="text-gray-600 mb-4 flex-1">
+          <ul class="text-gray-600 mb-4 flex-1"></ul>
             <li>• 100 video credits/month</li>
             <li>• All AI features</li>
             <li>• Priority support</li>
           </ul>
           <button class="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600">Upgrade</button>
         </div>
-        <!-- Enterprise Plan -->
         <div class="border rounded-lg p-6 bg-white shadow text-center flex flex-col">
           <h3 class="text-lg font-semibold mb-2">Enterprise</h3>
           <div class="text-3xl font-bold mb-2">Custom</div>
@@ -450,120 +359,382 @@
   </main>
 
   <!-- Profile Section -->
-  <main id="profile-section" class="hidden p-6">
+  <main id="profile-section" class="hidden p-6 ml-[90px]">
     <div class="max-w-xl mx-auto bg-white rounded-lg shadow p-6">
       <div class="flex items-center gap-4 mb-6">
         <div class="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center text-4xl text-gray-500">
           <i class="bi bi-person"></i>
         </div>
         <div>
-          <h2 class="text-2xl font-bold mb-1">John Doe</h2>
-          <p class="text-gray-600">johndoe@email.com</p>
+          <h2 class="text-2xl font-bold mb-1" id="profile-username"></h2>
+          <p class="text-gray-600" id="profile-email"></p>
         </div>
       </div>
       <div class="mb-6">
         <h3 class="text-lg font-semibold mb-2">Account Details</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-gray-700 text-sm mb-1">Full Name</label>
-            <input type="text" class="w-full border rounded px-3 py-2" value="John Doe" />
+        <form id="profile-details-form">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-gray-700 text-sm mb-1" for="profile-fullname">Full Name</label>
+              <input type="text" id="profile-fullname" class="w-full border rounded px-3 py-2" value="" autocomplete="name" />
+            </div>
+            <div>
+              <label class="block text-gray-700 text-sm mb-1" for="profile-email-input">Email</label>
+              <input type="email" id="profile-email-input" class="w-full border rounded px-3 py-2" value="" autocomplete="email" />
+            </div>
           </div>
-          <div>
-            <label class="block text-gray-700 text-sm mb-1">Email</label>
-            <input type="email" class="w-full border rounded px-3 py-2" value="johndoe@email.com" />
+          <div class="flex justify-end mt-4">
+            <button type="submit" class="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600">Save Account</button>
           </div>
-        </div>
+          <div id="profile-save-msg" class="text-green-600 text-sm mt-2 hidden">Saved!</div>
+        </form>
       </div>
       <div class="mb-6">
         <h3 class="text-lg font-semibold mb-2">Change Password</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-gray-700 text-sm mb-1">New Password</label>
-            <input type="password" class="w-full border rounded px-3 py-2" />
+        <form id="profile-password-form">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-gray-700 text-sm mb-1" for="profile-new-password">New Password</label>
+              <input type="password" id="profile-new-password" class="w-full border rounded px-3 py-2" autocomplete="new-password" />
+            </div>
+            <div>
+              <label class="block text-gray-700 text-sm mb-1" for="profile-confirm-password">Confirm Password</label>
+              <input type="password" id="profile-confirm-password" class="w-full border rounded px-3 py-2" autocomplete="new-password" />
+            </div>
           </div>
-          <div>
-            <label class="block text-gray-700 text-sm mb-1">Confirm Password</label>
-            <input type="password" class="w-full border rounded px-3 py-2" />
+          <div class="flex justify-end mt-4">
+            <button type="submit" class="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600">Save Changes</button>
           </div>
-        </div>
-      </div>
-      <div class="flex justify-end">
-        <button class="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600">Save Changes</button>
+          <div id="profile-password-msg" class="text-green-600 text-sm mt-2 hidden">Password changed!</div>
+          <div id="profile-password-error" class="text-red-600 text-sm mt-2 hidden"></div>
+        </form>
       </div>
     </div>
   </main>
 
-  <script>
-    function hideAllSections() {
-      document.querySelectorAll('main').forEach(main => main.classList.add('hidden'));
-      document.getElementById('dashboard-btn').classList.remove('active');
-      document.getElementById('pricing-btn').classList.remove('active');
-      document.getElementById('profile-btn').classList.remove('active');
-    }
+  <!-- Generate Image Section -->
+  <main id="generate-image-section" class="hidden p-6 ml-[90px]">
+    <div class="max-w-xl mx-auto bg-white rounded-lg shadow p-6">
+      <h2 class="text-2xl font-bold mb-4">Generate Image</h2>
+      <p class="mb-4 text-gray-600">Turn your words into stunning visuals with AI.</p>
+      <textarea class="w-full border rounded px-3 py-2 mb-4" placeholder="Describe the image you want to generate..."></textarea>
+      <div class="flex justify-end">
+        <button class="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600">Generate</button>
+      </div>
+      <div class="mt-6" id="generate-image-output"></div>
+    </div>
+  </main>
 
-    document.getElementById('dashboard-btn').addEventListener('click', () => {
-      hideAllSections();
-      document.getElementById('dashboard-btn').classList.add('active');
-      document.getElementById('dashboard-section').classList.remove('hidden');
-    });
+  <!-- Text to Speech Section -->
+  <main id="tts-section" class="hidden p-6 ml-[90px]">
+    <div class="max-w-xl mx-auto bg-white rounded-lg shadow p-6">
+      <h2 class="text-2xl font-bold mb-4">Text to Speech</h2>
+      <p class="mb-4 text-gray-600">Bring your text to life with natural-sounding voiceovers.</p>
+      <textarea class="w-full border rounded px-3 py-2 mb-4" placeholder="Enter text to convert to speech..."></textarea>
+      <div class="flex justify-end">
+        <button class="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600">Convert</button>
+      </div>
+      <div class="mt-6" id="tts-output"></div>
+    </div>
+  </main>
 
-    document.getElementById('main-content-btn').addEventListener('click', () => {
-      hideAllSections();
-      document.getElementById('main-content').classList.remove('hidden');
-    });
+  <!-- Face Fusion Section -->
+  <main id="face-fusion-section" class="hidden p-6 ml-[90px]">
+    <div class="flex gap-6">
+      <!-- Left Panel -->
+      <div class="w-1/3 space-y-6">
+        <h2 class="text-2xl font-bold">Face Fusion</h2>
+        <!-- Prompt -->
+        <div>
+          <label class="block text-gray-700 text-sm mb-1">Enter Prompt</label>
+          <textarea class="w-full border rounded px-3 py-2 h-40 resize-none" placeholder="Describe the scene..."></textarea>
+        </div>
+        <!-- Face Image Upload -->
+        <div>
+          <label class="block text-gray-700 text-sm mb-1">Face Image</label>
+          <div class="flex items-center space-x-2 bg-black rounded overflow-hidden">
+            <img src="https://via.placeholder.com/100x100" alt="Face" class="h-20 w-20 object-cover" />
+            <button class="bg-sky-500 text-white text-xs px-2 py-1 rounded">Change</button>
+          </div>
+        </div>
+        <!-- Reference Image Upload -->
+        <div>
+          <label class="block text-gray-700 text-sm mb-1">Reference Image (Optional)</label>
+          <div class="flex items-center space-x-2 bg-black rounded overflow-hidden">
+            <img src="https://via.placeholder.com/100x100" alt="Reference" class="h-20 w-20 object-cover" />
+            <button class="bg-sky-500 text-white text-xs px-2 py-1 rounded">Change</button>
+          </div>
+        </div>
+        <!-- Generate Button -->
+        <button class="w-full bg-sky-400 text-white py-2 rounded hover:bg-sky-500 font-medium">Generate</button>
+      </div>
+      <!-- Right Panel: Output Grid -->
+      <div class="w-2/3 grid grid-cols-3 gap-4">
+        <!-- Example Images -->
+        <img src="https://via.placeholder.com/300x450" class="rounded-lg object-cover" alt="Result" />
+        <img src="https://via.placeholder.com/300x450" class="rounded-lg object-cover" alt="Result" />
+        <img src="https://via.placeholder.com/300x450" class="rounded-lg object-cover" alt="Result" />
+      </div>
+    </div>
+  </main>
+  
 
-    document.getElementById('pricing-btn').addEventListener('click', () => {
-      hideAllSections();
-      document.getElementById('pricing-btn').classList.add('active');
-      document.getElementById('pricing-section').classList.remove('hidden');
-    });
+  <!-- Character Dialogue Section -->
+  <main id="character-dialogue-section" class="hidden p-6 ml-[90px]">
+    <div class="flex gap-6">
+      <!-- Left Column -->
+      <div class="w-1/3 space-y-6">
+        <h2 class="text-2xl font-bold">Character Dialogue</h2>
+  
+        <!-- Audio Upload -->
+        <div class="space-y-2">
+          <label class="font-medium">Audio</label>
+          <div class="flex items-center justify-center h-32 bg-gray-200 rounded-md cursor-pointer">
+            <input type="file" accept="audio/*" class="hidden" id="audioUpload" />
+            <label for="audioUpload" class="flex flex-col items-center cursor-pointer">
+                <i class="bi bi-mic-fill text-2xl mb-1"></i>
+              <span>Select file</span>
+            </label>
+          </div>
+        </div>
+  
+        <!-- Image Upload -->
+        <div class="space-y-2">
+          <label class="font-medium">Image</label>
+          <div class="flex items-center justify-center h-48 bg-gray-200 rounded-md cursor-pointer">
+            <input type="file" accept="image/*" class="hidden" id="imageUpload" />
+            <label for="imageUpload" class="flex flex-col items-center cursor-pointer">
+                <i class="bi bi-image text-2xl mb-1"></i>
+              <span>Select file</span>
+            </label>
+          </div>
+        </div>
+  
+        <!-- Generate Button -->
+        <button class="w-full bg-sky-300 text-white py-2 rounded hover:bg-sky-400 font-medium">Generate 👑</button>
+      </div>
+  
+      <!-- Right Column: Generated Videos -->
+      <div class="w-2/3 grid grid-cols-3 gap-4">
+        <!-- Replace these placeholders dynamically -->
+        <div class="bg-gray-300 rounded-md aspect-video flex items-center justify-center">
+          <video controls class="w-full h-full rounded-md bg-black">
+            <source src="" type="video/mp4" />
+          </video>
+        </div>
+        <div class="bg-gray-300 rounded-md aspect-video flex items-center justify-center">
+          <video controls class="w-full h-full rounded-md bg-black">
+            <source src="" type="video/mp4" />
+          </video>
+        </div>
+        <div class="bg-gray-300 rounded-md aspect-video flex items-center justify-center">
+          <video controls class="w-full h-full rounded-md bg-black">
+            <source src="" type="video/mp4" />
+          </video>
+        </div>
+        <div class="bg-gray-300 rounded-md aspect-video flex items-center justify-center">
+          <video controls class="w-full h-full rounded-md bg-black">
+            <source src="" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </div>
+  </main>
+  
 
-    document.getElementById('profile-btn').addEventListener('click', () => {
-      hideAllSections();
-      document.getElementById('profile-btn').classList.add('active');
-      document.getElementById('profile-section').classList.remove('hidden');
-    });
-  </script>
-
+  <!-- Video Modal -->
+  <div id="video-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 hidden">
+    <div class="bg-white rounded-lg shadow-lg p-6 max-w-xl w-full relative">
+      <button id="close-modal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-2xl" aria-label="Close">&times;</button>
+      <div id="modal-content">
+        <p class="text-center text-lg font-medium">Generating video, please wait...</p>
+        <div class="mt-4 flex justify-center">
+          <div class="loader border-4 border-gray-300 border-t-blue-500 rounded-full w-12 h-12 animate-spin"></div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
   <script>
-    // dropbtn
-    const btn = document.getElementById('dropdownButton');
-    const menu = document.getElementById('dropdownMenu');
-    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-    window.addEventListener('click', (e) => {
-      if (!btn.contains(e.target) && !menu.contains(e.target)) menu.classList.add('hidden');
+  /* --- Section Navigation, Title, and Sidebar Highlight --- */
+  function setTitle(title) {
+    document.title = title + ' | Reelcraft Clone';
+  }
+  function updateTitleOnSection(section) {
+    switch (section) {
+      case 'dashboard-section': setTitle('Dashboard'); break;
+      case 'pricing-section': setTitle('Pricing'); break;
+      case 'profile-section': setTitle('Profile'); break;
+      case 'generate-image-section': setTitle('Generate Image'); break;
+      case 'tts-section': setTitle('Text to Speech'); break;
+      case 'face-fusion-section': setTitle('Face Fusion'); break;
+      case 'character-dialogue-section': setTitle('Character Dialogue'); break;
+      default: setTitle('Home');
+    }
+  }
+  function hideAllSections() {
+    document.querySelectorAll('main').forEach(main => main.classList.add('hidden'));
+    document.querySelectorAll('#sidebar-buttons button').forEach(btn => btn.classList.remove('active'));
+    ['generate-image-card', 'tts-card', 'character-dialogue-card', 'face-fusion-card'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('active');
     });
+  }
+  function showSection(sectionId) {
+    hideAllSections();
+    if (sectionId === 'main-content') {
+      document.getElementById('main-content').classList.remove('hidden');
+    } else {
+      document.getElementById(sectionId).classList.remove('hidden');
+      const btnMap = {
+        'dashboard-section': 'dashboard-btn',
+        'pricing-section': 'pricing-btn',
+        'profile-section': 'profile-btn',
+        'generate-image-section': 'generate-image-btn',
+        'tts-section': 'tts',
+        'face-fusion-section': 'face-fusion',
+        'character-dialogue-section': 'character-dialogue'
+      };
+      if (btnMap[sectionId]) {
+        document.getElementById(btnMap[sectionId]).classList.add('active');
+      }
+    }
+    updateTitleOnSection(sectionId);
+    localStorage.setItem('last_section', sectionId);
+  }
 
-    // Cards
-    const renderCards = (selector, data = []) => {
-      const container = document.querySelector(selector);
-      const template = document.getElementById('card-template').content;
-      container.innerHTML = '';
-      data.forEach(item => {
-        const card = template.cloneNode(true);
-        card.querySelector('.card').href = item.link || '#';
-        card.querySelector('img').src = item.image;
-        card.querySelector('img').alt = item.title;
-        card.querySelector('h3').textContent = item.title;
-        card.querySelector('p').textContent = item.description;
-        if (selector !== '#studio-section') {
-          card.querySelector('.card').classList.add('inline-item');
-        }
-        // card.querySelector('.card').classList.add('inline-item'); // Important for slider
-        container.appendChild(card);
-      });
+  /* --- Card Rendering --- */
+  function renderCards(selector, data = []) {
+    const container = document.querySelector(selector);
+    const template = document.getElementById('card-template').content;
+    container.innerHTML = '';
+    data.forEach(item => {
+      const card = template.cloneNode(true);
+      let cardElement;
+      if (item.link) {
+        cardElement = document.createElement('a');
+        cardElement.className = 'card bg-white transition overflow-hidden flex flex-col relative group';
+        cardElement.href = item.link;
+        cardElement.target = '_blank';
+        cardElement.rel = 'noopener noreferrer';
+      } else {
+        cardElement = document.createElement('button');
+        cardElement.className = 'card bg-white transition overflow-hidden flex flex-col relative group';
+        if (item.id) cardElement.id = item.id;
+      }
+      const templateCard = card.querySelector('.card');
+      while (templateCard.firstChild) {
+        cardElement.appendChild(templateCard.firstChild);
+      }
+      templateCard.replaceWith(cardElement);
+
+      card.querySelector('img').src = item.image;
+      card.querySelector('img').alt = item.title;
+      card.querySelector('h3').textContent = item.title;
+      card.querySelector('p').textContent = item.description || '';
+      if (selector !== '#studio-section') {
+        card.querySelector('.card').classList.add('inline-item');
+      }
+      container.appendChild(card);
+    });
+  }
+
+  /* --- Static Login/Register System --- */
+  const USERS_KEY = 'static_users';
+  const SESSION_KEY = 'static_session';
+  function getUsers() { return JSON.parse(localStorage.getItem(USERS_KEY) || '{}'); }
+  function saveUsers(users) { localStorage.setItem(USERS_KEY, JSON.stringify(users)); }
+  function setSession(username) { localStorage.setItem(SESSION_KEY, username); }
+  function getSession() { return localStorage.getItem(SESSION_KEY); }
+  function clearSession() { localStorage.removeItem(SESSION_KEY); }
+  function showAuthModal() {
+    document.body.innerHTML = `
+      <div id="auth-page" class="min-h-screen flex items-center justify-center bg-gray-100">
+        <div class="bg-white rounded-lg shadow-lg p-8 max-w-sm w-full relative">
+          <h2 class="text-xl font-bold mb-4 text-center" id="auth-title">Login</h2>
+          <form id="auth-form" class="space-y-4">
+            <input type="text" id="auth-username" name="auth_username" class="w-full border rounded px-3 py-2" placeholder="Username" required autocomplete="username">
+            <input type="password" id="auth-password" name="auth_password" class="w-full border rounded px-3 py-2" placeholder="Password" required autocomplete="current-password">
+            <div id="auth-extra" class="hidden">
+              <input type="email" id="auth-email" name="auth_email" class="w-full border rounded px-3 py-2" placeholder="Email (optional)">
+            </div>
+            <div class="text-red-500 text-sm" id="auth-error"></div>
+            <button type="submit" class="bg-sky-500 text-white px-4 py-2 rounded w-full">Login</button>
+          </form>
+          <div class="mt-4 text-center text-sm">
+            <span id="auth-toggle-msg">Don't have an account?</span>
+            <button id="auth-toggle" class="text-sky-500 underline ml-1">Register</button>
+          </div>
+        </div>
+      </div>
+    `;
+    let isLogin = true;
+    const title = document.getElementById('auth-title');
+    const form = document.getElementById('auth-form');
+    const toggle = document.getElementById('auth-toggle');
+    const toggleMsg = document.getElementById('auth-toggle-msg');
+    const extra = document.getElementById('auth-extra');
+    const error = document.getElementById('auth-error');
+    const btn = form.querySelector('button[type=submit]');
+    toggle.onclick = () => {
+      isLogin = !isLogin;
+      title.textContent = isLogin ? 'Login' : 'Register';
+      btn.textContent = isLogin ? 'Login' : 'Register';
+      toggleMsg.textContent = isLogin ? "Don't have an account?" : "Already have an account?";
+      toggle.textContent = isLogin ? "Register" : "Login";
+      extra.classList.toggle('hidden', isLogin);
+      error.textContent = '';
     };
+    form.onsubmit = (e) => {
+      e.preventDefault();
+      error.textContent = '';
+      const username = form.auth_username.value.trim();
+      const password = form.auth_password.value;
+      const users = getUsers();
+      if (isLogin) {
+        if (!users[username] || users[username].password !== password) {
+          error.textContent = 'Invalid username or password';
+          return;
+        }
+        setSession(username);
+        document.getElementById('auth-page').remove();
+        location.reload();
+      } else {
+        if (users[username]) {
+          error.textContent = 'Username already exists';
+          return;
+        }
+        users[username] = {
+          password,
+          email: form.auth_email.value.trim()
+        };
+        saveUsers(users);
+        setSession(username);
+        document.getElementById('auth-page').remove();
+        location.reload();
+      }
+    };
+  }
 
+  /* --- DOMContentLoaded Main Logic --- */
+  document.addEventListener('DOMContentLoaded', function() {
+    // --- Auth check ---
+    if (!getSession()) {
+      document.documentElement.style.overflow = 'hidden';
+      showAuthModal();
+      return;
+    } else {
+      document.documentElement.style.overflow = '';
+    }
+
+    // --- Card Data ---
     const studioCards = [
-      { image: 'https://picsum.photos/seed/studio1/200/100', title: 'Generate Image', description: 'Turn your words into stunning visuals with AI', link: '#generate-image' },
-      { image: 'https://picsum.photos/seed/studio2/200/100', title: 'Text to Speech', description: 'Bring your text to life with natural-sounding voiceovers', link: '#tts' },
-      { image: 'https://picsum.photos/seed/studio3/200/100', title: 'Character Dialogue', description: 'Make characters talk with custom voice dialogues', link: '#character-dialogue' },
-      { image: 'https://picsum.photos/seed/studio4/200/100', title: 'Face Fusion', description: 'Blend two faces into one seamlessly', link: '#face-fusion' }
+      { image: 'https://picsum.photos/seed/studio1/200/100', title: 'Generate Image', description: 'Turn your words into stunning visuals with AI', id: 'generate-image-card' },
+      { image: 'https://picsum.photos/seed/studio2/200/100', title: 'Text to Speech', description: 'Bring your text to life with natural-sounding voiceovers', id: 'tts-card' },
+      { image: 'https://picsum.photos/seed/studio3/200/100', title: 'Character Dialogue', description: 'Make characters talk with custom voice dialogues', id: 'character-dialogue-card' },
+      { image: 'https://picsum.photos/seed/studio4/200/100', title: 'Face Fusion', description: 'Blend two faces into one seamlessly', id: 'face-fusion-card' }
     ];
-
-
     const featuredVideos = [
       { image: 'https://picsum.photos/seed/video1/200/100', title: 'Epic Journey' },
       { image: 'https://picsum.photos/seed/video2/200/100', title: 'Startup Launch' },
@@ -577,7 +748,6 @@
       { image: 'https://picsum.photos/seed/video10/200/100', title: 'Artistic Vision' },
       { image: 'https://picsum.photos/seed/video11/200/100', title: 'Sports Highlights' }
     ];
-
     const featuredShorts = [
       { image: 'https://picsum.photos/seed/short1/200/100', title: '30-sec Book Recap' },
       { image: 'https://picsum.photos/seed/short2/200/100', title: 'Motivational Clip' },
@@ -589,7 +759,6 @@
       { image: 'https://picsum.photos/seed/short8/200/100', title: 'Workout Burst' },
       { image: 'https://picsum.photos/seed/short9/200/100', title: 'Fashion Fix' }
     ];
-
     const featuredStories = [
       { image: 'https://picsum.photos/seed/story1/200/100', title: 'Sci-Fi Tale' },
       { image: 'https://picsum.photos/seed/story2/200/100', title: 'Fantasy Quest' },
@@ -601,7 +770,6 @@
       { image: 'https://picsum.photos/seed/story8/200/100', title: 'Adventure Clip' },
       { image: 'https://picsum.photos/seed/story9/200/100', title: 'Historical Flash' }
     ];
-
     const bookReviews = [
       { image: 'https://picsum.photos/seed/book1/200/100', title: 'Atomic Habits' },
       { image: 'https://picsum.photos/seed/book2/200/100', title: 'Deep Work' },
@@ -613,7 +781,6 @@
       { image: 'https://picsum.photos/seed/book8/200/100', title: 'Educated' },
       { image: 'https://picsum.photos/seed/book9/200/100', title: 'The Power of Now' }
     ];
-
     const wishes = [
       { image: 'https://picsum.photos/seed/wish1/200/100', title: 'Birthday Wish' },
       { image: 'https://picsum.photos/seed/wish2/200/100', title: 'Wedding Congrats' },
@@ -625,7 +792,6 @@
       { image: 'https://picsum.photos/seed/wish8/200/100', title: 'Baby Arrival' },
       { image: 'https://picsum.photos/seed/wish9/200/100', title: 'Promotion Congrats' }
     ];
-
     renderCards('#studio-section', studioCards);
     renderCards('#featured-videos-section', featuredVideos);
     renderCards('#featured-shorts-section', featuredShorts);
@@ -633,127 +799,112 @@
     renderCards('#book-review-section', bookReviews);
     renderCards('#wishes-section', wishes);
 
-    const API_KEY = 'key_62f7b9761eac41b6bfeb5aff015779bf7b310e96bef2c6960f5b981f94974ebe4d13e2d3153f6f9c0b3b69d767d58b87b71d295ec3ad54a7ff32278afe4eb968';
-    const ENDPOINT = 'https://api.runwayml.com/v1/generate';
-    const POLL_INTERVAL = 5000; // 5 seconds
+    // --- Navigation ---
+    document.getElementById('dashboard-btn').onclick = () => showSection('dashboard-section');
+    document.getElementById('main-content-btn').onclick = () => showSection('main-content');
+    document.getElementById('main-content-link-btn').onclick = (e) => { e.preventDefault(); showSection('main-content'); };
+    document.getElementById('pricing-btn').onclick = () => showSection('pricing-section');
+    document.getElementById('pricing-btn-header').onclick = () => showSection('pricing-section');
+    document.getElementById('profile-btn').onclick = () => showSection('profile-section');
+    document.getElementById('profile-btn-header').onclick = (e) => { e.preventDefault(); showSection('profile-section'); };
+    document.getElementById('generate-image-btn').onclick = () => showSection('generate-image-section');
+    if (document.getElementById('generate-image-card')) document.getElementById('generate-image-card').onclick = () => showSection('generate-image-section');
+    document.getElementById('tts').onclick = () => showSection('tts-section');
+    if (document.getElementById('tts-card')) document.getElementById('tts-card').onclick = () => showSection('tts-section');
+    document.getElementById('character-dialogue').onclick = () => showSection('character-dialogue-section');
+    if (document.getElementById('character-dialogue-card')) document.getElementById('character-dialogue-card').onclick = () => showSection('character-dialogue-section');
+    document.getElementById('face-fusion').onclick = () => showSection('face-fusion-section');
+    if (document.getElementById('face-fusion-card')) document.getElementById('face-fusion-card').onclick = () => showSection('face-fusion-section');
 
-    const createBtn = document.querySelector('.create-btn');
-    const textarea = document.querySelector('textarea');
-    const outputArea = document.getElementById('generated-video-output');
+    // On load, restore last section
+    const last = localStorage.getItem('last_section') || 'main-content';
+    showSection(last);
 
-    createBtn.addEventListener('click', async () => {
-      const prompt = textarea.value.trim();
-      if (!prompt) return alert('Please enter a story or idea first!');
-
-      try {
-        // UI state: disabled + loading spinner
-        setButtonLoading(true);
-        showLoadingIndicator();
-
-        // 1. Send generation request
-        const id = await submitGeneration(prompt);
-
-        // 2. Poll status
-        const videoURL = await pollForResult(id);
-
-        // 3. Display video
-        if (videoURL) {
-          renderVideo(videoURL);
-        } else {
-          throw new Error('Video generation failed or no video URL returned.');
-        }
-
-      } catch (error) {
-        alert('Error: ' + error.message);
-        console.error(error);
-      } finally {
-        setButtonLoading(false);
-      }
+    // --- Profile dropdown ---
+    const btn = document.getElementById('dropdownButton');
+    const menu = document.getElementById('dropdownMenu');
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menu.classList.toggle('hidden');
+    });
+    window.addEventListener('click', (e) => {
+      if (!btn.contains(e.target) && !menu.contains(e.target)) menu.classList.add('hidden');
     });
 
-    // --- Utility Functions ---
-
-    function setButtonLoading(isLoading) {
-      createBtn.disabled = isLoading;
-      createBtn.textContent = isLoading ? 'Generating...' : 'Create';
-    }
-
-    function showLoadingIndicator() {
-      outputArea.innerHTML = `
-      <div class="flex items-center gap-3 mt-4 text-gray-600">
-        <div class="w-6 h-6 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
-        <span>Generating your video, please wait...</span>
-      </div>
-    `;
-    }
-
-    async function submitGeneration(prompt) {
-      const res = await fetch(ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          prompt,
-          num_inference_steps: 25,
-          output_format: 'mp4'
-        })
-      });
-
-      if (!res.ok) throw new Error('Failed to submit generation request.');
-      const { id } = await res.json();
-      return id;
-    }
-
-    async function pollForResult(id) {
-      let status = 'in_progress';
-      let url = null;
-
-      while (status === 'in_progress') {
-        await new Promise(res => setTimeout(res, POLL_INTERVAL));
-
-        const poll = await fetch(`${ENDPOINT}/${id}`, {
-          headers: { 'Authorization': `Bearer ${API_KEY}` }
-        });
-
-        if (!poll.ok) throw new Error('Failed while polling video status.');
-
-        const result = await poll.json();
-        status = result.status;
-        url = result.output?.[0]?.url;
+    // --- Profile avatar logic ---
+    const username = getSession();
+    const users = getUsers();
+    const user = username && users[username] ? users[username] : null;
+    const avatarSpan = document.getElementById('profile-avatar');
+    if (avatarSpan) {
+      if (user && user.profilePic) {
+        avatarSpan.innerHTML = `<img src="${user.profilePic}" alt="Profile" class="w-8 h-8 rounded-full object-cover">`;
+      } else if (username) {
+        avatarSpan.textContent = username.charAt(0).toUpperCase();
+      } else {
+        avatarSpan.textContent = '?';
       }
-
-      return url;
     }
 
-    function renderVideo(videoURL) {
-      outputArea.innerHTML = `
-      <h2 class="text-xl font-bold mt-6 mb-2">Generated Video:</h2>
-      <video class="w-full rounded shadow-lg" controls>
-        <source src="${videoURL}" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    `;
+    // --- Logout link in profile dropdown ---
+    const logoutLink = document.querySelector('#dropdownMenu a[href="#"]:nth-child(2)');
+    if (logoutLink) {
+      logoutLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        clearSession();
+        location.reload();
+      });
     }
 
-
+    // --- Profile section logic ---
+    if (document.getElementById('profile-username')) {
+      document.getElementById('profile-username').textContent = username || '';
+      document.getElementById('profile-email').textContent = user && user.email || '';
+      document.getElementById('profile-fullname').value = user && user.fullname || '';
+      document.getElementById('profile-email-input').value = user && user.email || '';
+      document.getElementById('profile-details-form').onsubmit = function(e) {
+        e.preventDefault();
+        const fullname = document.getElementById('profile-fullname').value.trim();
+        const email = document.getElementById('profile-email-input').value.trim();
+        if (username && users[username]) {
+          users[username].fullname = fullname;
+          users[username].email = email;
+          saveUsers(users);
+          document.getElementById('profile-email').textContent = email;
+          const msg = document.getElementById('profile-save-msg');
+          msg.classList.remove('hidden');
+          setTimeout(() => msg.classList.add('hidden'), 1500);
+        }
+      };
+      document.getElementById('profile-password-form').onsubmit = function(e) {
+        e.preventDefault();
+        const newPass = document.getElementById('profile-new-password').value;
+        const confirmPass = document.getElementById('profile-confirm-password').value;
+        const msg = document.getElementById('profile-password-msg');
+        const err = document.getElementById('profile-password-error');
+        msg.classList.add('hidden');
+        err.classList.add('hidden');
+        if (!newPass || !confirmPass) {
+          err.textContent = 'Please fill both fields.';
+          err.classList.remove('hidden');
+          return;
+        }
+        if (newPass !== confirmPass) {
+          err.textContent = 'Passwords do not match.';
+          err.classList.remove('hidden');
+          return;
+        }
+        if (username && users[username]) {
+          users[username].password = newPass;
+          saveUsers(users);
+          msg.classList.remove('hidden');
+          setTimeout(() => msg.classList.add('hidden'), 1500);
+          document.getElementById('profile-new-password').value = '';
+          document.getElementById('profile-confirm-password').value = '';
+        }
+      };
+    }
+  });
   </script>
-
-  <!-- popup -->
-  <div id="video-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 hidden">
-    <div class="bg-white rounded-lg shadow-lg p-6 max-w-xl w-full relative">
-      <button id="close-modal"
-        class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
-      <div id="modal-content">
-        <p class="text-center text-lg font-medium">Generating video, please wait...</p>
-        <div class="mt-4 flex justify-center">
-          <div class="loader border-4 border-gray-300 border-t-blue-500 rounded-full w-12 h-12 animate-spin"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </body>
-
 </html>
